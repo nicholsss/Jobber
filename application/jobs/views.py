@@ -14,12 +14,12 @@ def jobs_form():
 def jobs_set_active(job_id):
 
     j = Job.query.get(job_id)
-    j.active = True
-   # if j == False:
-      #  j.done = True
-        
- #   elif j == True:
-     #  j.done = False
+    #j.active = True
+
+    if(j.active == False):
+        j.active=True
+    else:
+        j.active=False
     db.session().commit()
   
     return redirect(url_for("jobs_index"))

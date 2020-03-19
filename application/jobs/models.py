@@ -8,7 +8,7 @@ class Job(db.Model):
 
     name = db.Column(db.String(144), nullable=False)
     
-    salary = db.Column(db.String(144), nullable=False)
+    salary = db.Column(db.Integer, nullable=False)
     active = db.Column(db.Boolean, nullable=False)
 
     def __init__(self, name,salary):
