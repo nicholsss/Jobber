@@ -2,7 +2,8 @@
   
 {% block body %}
 <form method="POST" action="{{ url_for('jobs_create') }}">
-  <input type="text" name="name"/>
+  <input type="text" name="name" placeholder="job name"/>
+  <input type="text" name="salary" placeholder="salary"/>
   <input type="submit" value="Add a new job"/>
 </form>
 {% endblock %}

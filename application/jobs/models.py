@@ -7,10 +7,11 @@ class Job(db.Model):
     onupdate=db.func.current_timestamp())
 
     name = db.Column(db.String(144), nullable=False)
-    #Salary ei näy?
-    #salary = db.Column(db.Integer, nullable=False)
-    done = db.Column(db.Boolean, nullable=False)
+    
+    salary = db.Column(db.String(144), nullable=False)
+    active = db.Column(db.Boolean, nullable=False)
 
-    def __init__(self, name):
+    def __init__(self, name,salary):
         self.name = name
-        self.done = False
+        self.salary =salary
+        self.active = False

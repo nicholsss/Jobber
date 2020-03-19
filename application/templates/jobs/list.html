@@ -3,13 +3,19 @@
 {% block body %}
   <table>
     <tr>
-      <th>Task</th>
+      <th>job</th>
       <th>Done</th>
     </tr>
-    {% for task in tasks %}
+    {% for job in jobs %}
     <tr>
-      <td>{{ task.name }}</td>
-      <td>{{ task.done }}</td>
+      <td>{{ job.name }} </td>
+      <td>{{ job.salary }}</td>
+      <td>{{ job.active }}</td>
+      <td>
+        <form method="POST" action="{{ url_for('jobs_set_active', job_id=job.id) }}">
+          <input type="submit" value="Jobs u have"/>
+        </form>
+            </td>
     </tr>
     {% endfor %}
   </table>
