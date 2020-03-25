@@ -1,6 +1,7 @@
 from application import app,db
 from flask import redirect, render_template, request, url_for
 from application.jobs.models import Job
+from application.jobs.forms import JobForm
 
 @app.route("/jobs", methods=["GET"])
 def jobs_index():
@@ -8,7 +9,7 @@ def jobs_index():
 
 @app.route("/jobs/new/")
 def jobs_form():
-    return render_template("jobs/new.html")
+    return render_template("jobs/new.html", form = JobForm())
 
 @app.route("/jobs/<job_id>/", methods=["POST"])
 def jobs_set_active(job_id):
@@ -21,18 +22,27 @@ def jobs_set_active(job_id):
     else:
         j.active=False
     db.session().commit()
+
   
     return redirect(url_for("jobs_index"))
 
 @app.route("/jobs/", methods=["POST"])
 def jobs_create():
 
-    j = Job(request.form.get("name"), request.form.get("salary"))
+    form = JobForm(request.form)
+
+    #if not form.validate():
+      # return render_template("jobs/new.html", form = form)
+    #j = Job(request.form.get("name"), request.form.get("salary"))
+    j = Job(form.name.data, form.salary.data)
+    #j.salary = form.salary.data
     #s = Job(request.form.get("salary"))
 
     db.session().add(j)
 
     #db.session().add(s)
     db.session().commit()
+
+    
 
     return redirect(url_for("jobs_index"))
