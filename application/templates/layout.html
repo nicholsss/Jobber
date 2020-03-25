@@ -10,7 +10,7 @@
     <body>
       {% if current_user.is_authenticated %}
       <p>
-	Logged in {{ current_user.name }}.  <a href="{{ url_for('auth_logout') }}">Logout</a>
+	Logged in {{ current_user.username }}.  <a href="{{ url_for('auth_logout') }}">Logout</a>
       </p>
       {% else %}
       <a href="{{ url_for('auth_login') }}">Log in</a>
