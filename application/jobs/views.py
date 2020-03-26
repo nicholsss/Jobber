@@ -19,7 +19,7 @@ def jobs_form():
 def jobs_edit_form(job_id):
     return render_template("jobs/edit.html",job_id=job_id, form = JobForm())
 
-@app.route("/jobs/<job_id>/")
+@app.route("/jobs/view/<job_id>/")
 def jobs_show(job_id):
     return render_template("jobs/job.html", job = Job.query.get(job_id), user= User.query.get(Job.query.get(job_id).account_id))
 
@@ -42,7 +42,7 @@ def jobs_edit(job_id):
     return redirect(url_for("jobs_index"))
 
 
-@app.route("/jobs/<job_id>/", methods=["POST"])
+@app.route("/jobs/active/<job_id>/", methods=["POST"])
 @login_required
 def jobs_set_active(job_id):
 
