@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+  
+{% block body %}
+<form  action="{{ url_for('jobs_edit', job_id = job_id) }}">
+  <table>
+    <tr>
+        
+        
+        <td>
+          
+  
+        </td>
+      </tr>
+      <tr>
+        
+        
+        <td>
+       
+      </tr>
+<!--Tähän kuinka monta paikkaa kyseiseen työhön on-->
+    <tr>
+      <td colspan="3">
+        <input type="submit" value="edit"/>
+      </td>
+    </tr>
+  </table>
+</form>
+{% endblock %}

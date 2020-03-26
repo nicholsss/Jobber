@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block body %}
+  <table>
+    <tr>
+      <th>job</th>
+      <th>salary</th>
+      <th>Active</th>
+      <th>username</th>
+    </tr>
+    <tr>
+       
+        
+      <td>{{ job.name }} </td>
+      <td>{{ job.salary }}</td>
+      <td>{{ job.active }}</td>
+      <td>{{ user.username }}</td>
+            </td>
+    </tr>
+
+  </table>
+  {% endblock %}

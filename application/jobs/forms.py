@@ -3,7 +3,7 @@ from wtforms import StringField, validators,IntegerField
 
 class JobForm(FlaskForm):
     name = StringField("Job name", [validators.Length(min=2)])
-    salary = IntegerField("Salary", [validators.Required])
+    salary = IntegerField("Salary")
     #Salary pitää vielä katsoa että ottaa vain Integerin vastan.
     class Meta:
         csrf = False

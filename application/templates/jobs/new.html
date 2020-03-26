@@ -26,6 +26,13 @@
       <td>
         {{form.salary}}
       </td>
+      <td>
+      <ul>
+      {% for error in form.salary.errors %}
+          <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+        </td>
     </tr>
 <!--Tähän kuinka monta paikkaa kyseiseen työhön on-->
     <tr>
