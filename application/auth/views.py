@@ -31,7 +31,7 @@ def auth_logout():
 def register_form():
     return render_template("auth/registerform.html", form = RegisterForm())
 
-@app.route("/auth/", methods=["POST"])
+@app.route("/auth/register", methods=["POST"])
 def auth_register():
     form = RegisterForm(request.form)
 
@@ -41,4 +41,4 @@ def auth_register():
 
     db.session().commit()
     
-    return redirect(url_for("index"))
+    return redirect(url_for("auth_login"))
