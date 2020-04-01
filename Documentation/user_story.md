@@ -1,7 +1,7 @@
 # User Stories
 
-* As a Student, I want money, So that i can buy new stuff
-* As a Entrepreneur, I need small jobs done fast, So that i can focus on other things
-* As a  Unemployed, I need small gigs, So i can get by
-* As a Employee, i need do extra work, So i can get more money
-* As a being bored, I wanna do random work, So i can get some pocket money
+* **As a Student**, I try to **search a small job**, So i can **earn money to buy school books**
+* **As a Entrepreneur**, I post **jobs that i dont have time to do** So i can focus on other things that i have to do
+* **As a  Unemployed**, I try to **find a random jobs**, So i can **earn a little extra money**
+* As a Employee, i want to **search for extra job**, So i can **earn some extra money**
+* As a being bored, i want to **I search pleasing jobs**, so **i'm not Bored anymore**
