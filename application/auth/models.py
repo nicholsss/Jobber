@@ -53,4 +53,6 @@ class User(Base):
 
         return response
     #Eniten tienannut
+
+    #Eniten töistä kiinnostunut
     

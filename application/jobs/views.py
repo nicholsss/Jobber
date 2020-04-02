@@ -78,9 +78,16 @@ def jobs_set_active(job_id):
 @login_required
 def jobs_delete(job_id):
     j = Job.query.get(job_id)
+    #q = Question.get(job_id)
+    Question.query.filter_by(job_id = job_id).delete()
+
+
+
+
+
 
     db.session().delete(j)
-
+ 
     db.session().commit()
 
 
