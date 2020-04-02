@@ -38,7 +38,6 @@ def jobs_question(job_id):
     return redirect(url_for("jobs_show",job_id=job_id))
 
 
-
 @app.route("/jobs/<job_id>/", methods=['POST'])
 @login_required
 def jobs_edit(job_id):
@@ -57,15 +56,17 @@ def jobs_edit(job_id):
     return redirect(url_for("jobs_index"))
 
 
+
 @app.route("/jobs/active/<job_id>/", methods=["POST"])
 @login_required
 def jobs_set_active(job_id):
 #Tästä tulee kiinnostunut, ja jokaisella käyttäjällä on on kiinostunt projektiin.
     j = Job.query.get(job_id)
     #j.active = True
-
+    
     if(j.active == False):
         j.active=True
+         #j.r.append(current_user)
     else:
         j.active=False
     db.session().commit()

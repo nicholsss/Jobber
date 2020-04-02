@@ -1,10 +1,10 @@
 from application import db
 from application.models import Base
 
-#user_jobs = db.Table('userJobs',
-    #db.Column('job_id', db.Integer, db.ForeignKey('job.id')),
-    #db.Column('account_id', db.Integer, db.ForeignKey('account.id'))
-#)
+user_jobs = db.Table('userJobs',
+    db.Column('job_id', db.Integer, db.ForeignKey('job.id')),
+    db.Column('account_id', db.Integer, db.ForeignKey('account.id'))
+)
 
 
 class Job(Base):
@@ -18,7 +18,7 @@ class Job(Base):
     
     description = db.Column(db.String, nullable=False)
     account_id = db.Column(db.Integer, db.ForeignKey('account.id'), nullable=False)
-    #r = db.relationship('account', secondary = user_jobs, backref= db.backref('jobs'), lazy=True)
+    r = db.relationship('User', secondary = user_jobs, backref= db.backref('tyot'), lazy=True)
     question = db.relationship("Question", backref="job",lazy=True)
     def __init__(self, name,salary,description,account_id):
         self.name = name

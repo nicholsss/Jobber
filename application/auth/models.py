@@ -1,5 +1,6 @@
 from application import db
 from application.models import Base
+from sqlalchemy.sql import text
 #Tämä liittää monesta moneen ei puuttuu backref.
 #works = db.Table('works',
 #db.Column('account_id', db.Integer, db.ForeignKey('account.id'), primary_key=True),
@@ -37,3 +38,19 @@ class User(Base):
 
     def is_authenticated(self):
         return True
+
+    @staticmethod
+    def most_questions_asked():
+        stmt = text("SELECT Account.id, Account.username, COUNT(Question.id) FROM Account"
+                " LEFT JOIN Question ON Question.account_id = Account.id"
+                " GROUP BY Account.id"
+                " HAVING COUNT(Question.id) >0")
+        res = db.engine.execute(stmt)
+
+        response = []
+        for row in res:
+            response.append({"id":row[0], "name":row[1],"question":row[2]})
+
+        return response
+    #Eniten tienannut
+    

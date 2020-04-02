@@ -4,4 +4,18 @@
   <p>
     Hello world!
   </p>
+
+   {% if most_questions is defined %}
+      <p>
+       Users with questions in our system
+      </p>
+      
+      <ul>
+        {% for user in most_questions %}
+        <li>
+          {{user.name}} {{user.question}}
+        </li>
+        {% endfor %}
+      </ul>
+      {% endif %}
 {% endblock %}
