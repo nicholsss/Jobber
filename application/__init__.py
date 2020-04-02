@@ -21,6 +21,9 @@ from application.jobs import views
 from application.auth import models
 from application.auth import views
 
+#from application.reviews import models
+#from application.reviews import views
+
 #Kirjautuminen
 from application.auth.models import User
 from os import urandom

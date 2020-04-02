@@ -7,6 +7,7 @@
       <th>salary</th>
       <th>Active</th>
       <th>username</th>
+      <th>description</th>
     </tr>
     <tr>
        
@@ -15,8 +16,26 @@
       <td>{{ job.salary }}</td>
       <td>{{ job.active }}</td>
       <td>{{ user.username }}</td>
-            </td>
+      <td>{{job.description}}</td>
+       
+            
     </tr>
+   
+    <tr>
+      <form method ="POST" action="{{url_for('jobs_question', job_id = job.id)}}">
+      <td>{{form.name.label}}</td>
+      <td>{{form.name}}</td>
+      <td><input type="submit" value="Ask a question"/></td>
+    </form>
+    </tr>
+    <tr>
+      {% for question in job.question %}
+      <tr>
+        <td>{{question.content}}</td>
+      </tr>
+      {% endfor %}
+    </tr>
+    
 
   </table>
   {% endblock %}
