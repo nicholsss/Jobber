@@ -1,6 +1,33 @@
 {% extends "layout.html" %}
 
 {% block body %}
+<div class="container">
+<div class="row">
+  
+{% for job in jobs %}
+    <div class="card text-center" style="width: 18rem;">
+     <div class ="card-body">
+       <a href="{{ url_for('jobs_show', job_id=job.id) }}"><h5 class="card-title">{{job.name}}</h5></a>
+       <h6 class="card-subtitle mb-2 text-muted">{{job.salary}} €</h6>
+       <p class="card-text">{{job.description}}</p>
+      <p>{{ job.active }}</p>
+      </div>
+      
+      <form method="POST" action="{{ url_for('jobs_set_active', job_id=job.id) }}">
+        <input style="width: 90px;" type="submit" value="Interested" class="btn btn-primary btn-sm"/>
+      </form>
+      <form action="{{ url_for('jobs_edit_form', job_id=job.id) }}">
+        <input style="width: 90px;" class="btn btn-warning btn-sm"type="submit" value="Edit Job "/>
+      </form>
+      <form method="POST" action="{{ url_for('jobs_delete', job_id=job.id) }}">
+        <input  style="width: 90px;" class="btn btn-danger btn-sm" type="submit" value="delete job"/>
+      </form>
+    
+    </div>
+    
+    {% endfor %}
+  </div>
+</div>
   <table>
     <tr>
       <th>job</th>
@@ -8,6 +35,9 @@
       <th>Active</th>
     </tr>
     {% for job in jobs %}
+    
+    
+    <!--
     <tr>
       <td>
         <a href="{{ url_for('jobs_show', job_id=job.id) }}">{{ job.name }} </a>
@@ -35,4 +65,5 @@
     </tr>
     {% endfor %}
   </table>
+  -->
 {% endblock %}
