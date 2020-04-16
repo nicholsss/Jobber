@@ -19,10 +19,12 @@ class User(Base):
     #name = db.Column(db.String(144), nullable=False)
     username = db.Column(db.String(144), nullable=False)
     password = db.Column(db.String(144), nullable=False)
-
+    roles = db.Column(db.String(144), nullable=False)
     jobs = db.relationship("Job", backref="account",lazy=True)
     question = db.relationship('Question', backref="account")
-    def __init__(self,username, password):
+    
+
+    def __init__(self,username, password, roles):
        # self.name = name
         self.username = username
         self.password = password
