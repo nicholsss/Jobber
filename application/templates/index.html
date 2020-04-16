@@ -1,14 +1,15 @@
 {% extends "layout.html" %}
 
 {% block body %}
-  <p>
-    Hello world!
-  </p>
+<div
+class="jumbotron">
+  <h1 class="display-4">MainPage</h1>
 
+  <p class="lead">Users with questions in our system</p>
+
+  <hr class="my-4">
    {% if most_questions is defined %}
-      <p>
-       Users with questions in our system
-      </p>
+     
       
       <ul>
         {% for user in most_questions %}
@@ -18,4 +19,5 @@
         {% endfor %}
       </ul>
       {% endif %}
+    </div>
 {% endblock %}
