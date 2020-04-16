@@ -1,4 +1,4 @@
-from application import app,db
+from application import app,db,login_manager,login_required
 from flask import redirect, render_template, request, url_for
 from flask_login import login_required, current_user
 from application.jobs.models import Job
@@ -78,13 +78,11 @@ def jobs_set_active(job_id):
 @login_required
 def jobs_delete(job_id):
     j = Job.query.get(job_id)
+    if j.account_id != current_user.id:
+       #Tätä pitää vielä muokata, sillä ohjaa väärään paikkaan.
+        return login_manager.unauthorized()
     #q = Question.get(job_id)
     Question.query.filter_by(job_id = job_id).delete()
-
-
-
-
-
 
     db.session().delete(j)
  

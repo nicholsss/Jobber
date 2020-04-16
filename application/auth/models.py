@@ -17,7 +17,7 @@ class User(Base):
                               onupdate=db.func.current_timestamp())
 
     #name = db.Column(db.String(144), nullable=False)
-    username = db.Column(db.String(144), nullable=False)
+    username = db.Column(db.String(144), nullable=False, unique=True)
     password = db.Column(db.String(144), nullable=False)
     roles = db.Column(db.String(144), nullable=False)
     jobs = db.relationship("Job", backref="account",lazy=True)
@@ -28,6 +28,7 @@ class User(Base):
        # self.name = name
         self.username = username
         self.password = password
+        self.roles = roles
   
     def get_id(self):
         return self.id

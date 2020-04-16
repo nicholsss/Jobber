@@ -35,10 +35,21 @@ def register_form():
 def auth_register():
     form = RegisterForm(request.form)
 
-    r = User(form.username.data, form.password.data)
+    if(form.username.data == "admin"):
+        roles = "ADMIN"
+    else:
+        roles ="USER"
+    r = User(form.username.data, form.password.data,roles)
 
+    
     db.session().add(r)
 
-    db.session().commit()
+
+    try:    
+        db.session().commit()
+    except:
+        return render_template("auth/registerform.html", form = form,
+                               error = "username must be unique")
     
+
     return redirect(url_for("auth_login"))
