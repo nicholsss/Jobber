@@ -28,42 +28,4 @@
     {% endfor %}
   </div>
 </div>
-  <table>
-    <tr>
-      <th>job</th>
-      <th>salary</th>
-      <th>Active</th>
-    </tr>
-    {% for job in jobs %}
-    
-    
-    <!--
-    <tr>
-      <td>
-        <a href="{{ url_for('jobs_show', job_id=job.id) }}">{{ job.name }} </a>
-      </td>
-   
-      
-      <td>{{ job.salary }} €</td>
-      <td>{{ job.active }}</td>
-      <td>
-        <form method="POST" action="{{ url_for('jobs_set_active', job_id=job.id) }}">
-          <input type="submit" value="Jobs u have"/>
-        </form>
-      </td>
-      <td>
-        <form method="POST" action="{{ url_for('jobs_delete', job_id=job.id) }}">
-          <input type="submit" value="delete job"/>
-        </form>
-      </td>
-      <td>
-        <form action="{{ url_for('jobs_edit_form', job_id=job.id) }}">
-          <input type="submit" value="edit"/>
-        </form>
-      </td>
-            </td>
-    </tr>
-    {% endfor %}
-  </table>
-  -->
 {% endblock %}
