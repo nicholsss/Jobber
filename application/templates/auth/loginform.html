@@ -1,8 +1,37 @@
 {% extends "layout.html" %}
 
 {% block body %}
-{{ error }}
+
+
+<div class="container">
 <form method="POST" action="{{ url_for('auth_login') }}">
+      <h1>Login</h1>
+      <div class="form-group">
+<label for="usernameInput">{{form.username.label}}</label>
+            {{form.username (class='form-control')}} 
+      
+<div class="form-group">
+
+     
+     
+     <label for="passwordInput">{{form.password.label}}</label>
+
+     {{form.password (class='form-control')}} 
+     
+</div>
+<input value ="Login" type=submit class="btn btn-primary btn-block">
+</form>
+
+{% if error is defined %}
+    <div class="alert alert-danger">
+        {{ error }}
+    </div>
+    {% endif %}
+</div>  
+
+
+<!--
+      </div>
   <table>
         <h1>Login</h1>
     <tr>
@@ -27,4 +56,5 @@
       </td>
     </tr>
 </form>
+-->
 {% endblock %}

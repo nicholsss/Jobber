@@ -34,6 +34,10 @@ def register_form():
 @app.route("/auth/register", methods=["POST"])
 def auth_register():
     form = RegisterForm(request.form)
+    if not form.validate():
+        return render_template("auth/registerform.html", form = form,
+                               error = "Username and password lenght need to be 3-12")
+
 
     if(form.username.data == "admin"):
         roles = "ADMIN"

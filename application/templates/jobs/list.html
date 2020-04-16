@@ -14,7 +14,7 @@
       </td>
    
       
-      <td>{{ job.salary }}</td>
+      <td>{{ job.salary }} €</td>
       <td>{{ job.active }}</td>
       <td>
         <form method="POST" action="{{ url_for('jobs_set_active', job_id=job.id) }}">
