@@ -53,7 +53,7 @@ pip install -r requirements.txt
 ```
 
 ## Heroku
-Tämän vaiheen suorittamiseen tarvitaan Heroku [käyttäjätilin](https://signup.heroku.com), sekä [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli).
+Tämän vaiheen suorittamiseen tarvitaan Heroku [Käyttäjätilin](https://signup.heroku.com), sekä [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli).
 
 Aktivoi virtuaaliympäristö
 ```
