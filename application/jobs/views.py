@@ -43,7 +43,15 @@ def jobs_question(job_id):
 def jobs_edit(job_id):
     j = Job.query.get(job_id)
 
+
+    if j.account_id != current_user.id:
+   
+        return login_manager.unauthorized()
     form = JobForm(request.form)
+   
+    
+
+    
     if not form.validate():
          
          return render_template("jobs/edit.html", job_id=job_id, form = form)
@@ -61,9 +69,15 @@ def jobs_edit(job_id):
 @login_required
 def jobs_set_active(job_id):
 #Tästä tulee kiinnostunut, ja jokaisella käyttäjällä on on kiinostunt projektiin.
-    j = Job.query.get(job_id)
-    #j.active = True
     
+    
+    j = Job.query.get(job_id)
+
+    j.intrest_user.append(current_user)
+
+
+
+
     if(j.active == False):
         j.active=True
          #j.r.append(current_user)
@@ -117,3 +131,5 @@ def jobs_create():
     
 
     return redirect(url_for("jobs_index"))
+
+    
