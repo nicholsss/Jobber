@@ -22,7 +22,7 @@ user
  Password: user 
 ```
 
-## Käyttöohjeet
+## Asennusohjeet
 
 **Tämän vaiheen suorittamiseen tarvitsen [Python3](https://www.python.org/downloads) asennettuna**
 
