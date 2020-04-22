@@ -24,6 +24,8 @@ user
 
 ## Käyttöohjeet
 
+**Tämän vaiheen suorittamiseen tarvitsen [Python3](https://www.python.org/downloads) asennettuna**
+
 Lataa Reposition ZIP-tiedosto tai kopio se komentorivin avulla
 ```
 git clone https://github.com/nicholsss/Jobber.git
@@ -87,6 +89,8 @@ Lisätään sovellukselle tietokanta Herokuun
 ```
 heroku addons:add heroku-postgresql:hobby-dev
 ```
+
+
 
 
 
