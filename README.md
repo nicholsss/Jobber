@@ -10,11 +10,15 @@ Käyttäjä voi lisätä työn sivustolle, jonka muut käyttäjät voivat hyväk
 * [User-Stories](https://github.com/nicholsss/Jobber/blob/master/Documentation/user_story.md)
 * [Tietokantakaavio](https://github.com/nicholsss/Jobber/blob/master/Documentation/UusiKaavio.PNG)
 
-# Admin
-## Username: admin
-## Password: admin
-
-# User
+# Käyttäjät
+Admin
+```
+ Username: admin
+ Password: admin
+```
+user
+```
 ## Username: user
 ## Password: user 
+```
 
