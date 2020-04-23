@@ -7,7 +7,7 @@ Käyttäjä voi lisätä työn sivustolle, jonka muut käyttäjät voivat hyväk
 * [Jobber](https://tsoha-jobber.herokuapp.com/jobs/new/)
 
 # Dokumentaatio
-* [User-Stories](https://github.com/nicholsss/Jobber/blob/master/Documentation/user_story.md)
+* [User-Stories ja SQL-kyselyt](https://github.com/nicholsss/Jobber/blob/master/Documentation/user_story.md)
 * [Tietokantakaavio ja CREATE TABLE lauseet](https://github.com/nicholsss/Jobber/blob/master/Documentation/Tietokantakaavio.md)
 
 # Käyttäjät
