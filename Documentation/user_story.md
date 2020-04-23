@@ -15,7 +15,7 @@ INSERT INTO Job(id,date_created,date_modified,name,salary,active,description,acc
 * **As a  Unemployed**, I want to **Track how much i have earned**, So that **Kela doesn't cut unemployed money**
 
 ```
-SELECT SUM(salary) from Job
+Tämä tulee 7 viikkoon mennessä
 ```
 
 * **As a Interested user**, I want to **View different jobs**, So that **I get to know what kind of jobs there are**
