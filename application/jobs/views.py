@@ -20,7 +20,7 @@ def jobs_index():
          #    return render_template("jobs/list.html", jobs = Job.interested_jobs(current_user.id))
         #except :
          
-         #     return render_template("jobs/list.html", jobs = Job.query.all())
+         #    s return render_template("jobs/list.html", jobs = Job.query.all())
     
    
 
