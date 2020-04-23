@@ -1,6 +1,10 @@
 from application import db
 from application.models import Base
 from sqlalchemy.sql import text
+from flask_sqlalchemy import SQLAlchemy
+from werkzeug.security import generate_password_hash, check_password_hash
+
+
 #Tämä liittää monesta moneen ei puuttuu backref.
 #works = db.Table('works',
 #db.Column('account_id', db.Integer, db.ForeignKey('account.id'), primary_key=True),
@@ -18,17 +22,24 @@ class User(Base):
 
     #name = db.Column(db.String(144), nullable=False)
     username = db.Column(db.String(144), nullable=False, unique=True)
-    password = db.Column(db.String(144), nullable=False)
+    password_hash = db.Column(db.String(144), nullable=False)
     roles = db.Column(db.String(144), nullable=False)
     jobs = db.relationship("Job", backref="account",lazy=True)
     question = db.relationship('Question', backref="account")
     
 
-    def __init__(self,username, password, roles):
+    def __init__(self,username, roles):
        # self.name = name
         self.username = username
-        self.password = password
+        #self.password = password
         self.roles = roles
+    
+    def set_password(self, password):
+        self.password_hash = generate_password_hash(password)
+
+    def check_password(self, password):
+        return check_password_hash(self.password_hash, password)
+    
   
     def get_id(self):
         return self.id

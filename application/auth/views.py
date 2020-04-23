@@ -13,8 +13,12 @@ def auth_login():
     form = LoginForm(request.form)
     # mahdolliset validoinnit
 
-    user = User.query.filter_by(username=form.username.data, password=form.password.data).first()
+    user = User.query.filter_by(username=form.username.data).first()
     if not user:
+         return render_template("auth/loginform.html", form = form,
+                               error = "No such username or password")
+    lol = user.check_password(password=form.password.data)
+    if not lol:
         return render_template("auth/loginform.html", form = form,
                                error = "No such username or password")
 
@@ -43,8 +47,11 @@ def auth_register():
         roles = "ADMIN"
     else:
         roles ="USER"
-    r = User(form.username.data, form.password.data,roles)
+    
 
+    r = User(form.username.data,roles)
+    db.session().add(r)
+    r.set_password(form.password.data)
     
     db.session().add(r)
 
