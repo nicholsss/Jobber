@@ -10,11 +10,17 @@ from application.questions.forms import questionForm
 @app.route("/jobs", methods=["GET"])
 def jobs_index():
 
-        try:
-             return render_template("jobs/list.html", jobs = Job.interested_jobs(current_user.id))
-        except :
+    if current_user.is_authenticated:
+       return render_template("jobs/list.html", jobs = Job.interested_jobs(current_user.id))
+   
+    else:
+        
+            return render_template("jobs/list.html", jobs = Job.query.all())
+        #try:
+         #    return render_template("jobs/list.html", jobs = Job.interested_jobs(current_user.id))
+        #except :
          
-              return render_template("jobs/list.html", jobs = Job.query.all())
+         #     return render_template("jobs/list.html", jobs = Job.query.all())
     
    
 
