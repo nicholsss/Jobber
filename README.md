@@ -1,7 +1,9 @@
 # Jobber
 
 ## Kuvaus
-Käyttäjä voi lisätä työn sivustolle, jonka muut käyttäjät voivat hyväksyä. Työn suorittamisen jälkeen työn tekijä voi antaa arvosanan / arvostelun työlle, joka näkyy työn antajan omalla sivulla. Työn antaja voi myös antaa arvostelun työntekijästä. Työn suorittamisen jälkeen työntekijän tulee ilmottautua pois työstä, jolloin työn lisääjä voi poistaa kyseisen työn. Työntekijä voi seurata sivultaan sitä kuinka paljon on tienannut, sillä työnantaja ilmoittaa työn hinnan. Työntekijät voivat myös kysyä kysymyksiä tehtävässä, ja työn luoja pystyy vastaamaan näihin kysymyksiin.
+Käyttäjä voi lisätä työn sivustolle, johon muut käyttäjät voivat ilmoittaa kiinnostuksensa. Työn sivulla näkyy lista kiinnostuneita käyttäjistä. Työn luoja pystyy näkemään käyttäjien puhelinnumeron, jonka avulla hän pystyy ottamaan yhteyttä haluamiinsa henkiöihin.
+Työntekijä sovelluksessa lisätä tekemänsä työn palkan tilastoihinsa, josta hän pystyy seuraamaan tienaus historiaansa. Käyttäjä voi myös esittää kysymyksiä työhön työn sivustolla.
+
 
 ## Linkki herokuun
 * [Jobber](https://tsoha-jobber.herokuapp.com/jobs/new/)
