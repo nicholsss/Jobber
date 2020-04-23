@@ -2,7 +2,7 @@ from application import db
 from sqlalchemy.sql import text
 from application.models import Base
 
-user_jobs = db.Table('userJobs',
+user_jobs = db.Table('userjobs',
     db.Column('job_id', db.Integer, db.ForeignKey('job.id')),
     db.Column('account_id', db.Integer, db.ForeignKey('account.id'))
 )
@@ -32,7 +32,7 @@ class Job(Base):
 
     def interested_jobs(accountID):
 
-        stmt = text("SELECT Job.id, Job.name, Job.salary,Job.description, CASE WHEN Job.id IN (SELECT UJ.job_id FROM Account A LEFT JOIN userJobs UJ on A.id = UJ.account_id WHERE UJ.account_id = :accountID)"
+        stmt = text("SELECT Job.id, Job.name, Job.salary,Job.description, CASE WHEN Job.id IN (SELECT UJ.job_id FROM Account A LEFT JOIN userjobs UJ on A.id = UJ.account_id WHERE UJ.account_id = :accountID)"
         " THEN 'Interested' ELSE 'Not interested' END FROM Job").params(accountID = accountID)
         res = db.engine.execute(stmt)
         response = []
