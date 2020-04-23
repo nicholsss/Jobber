@@ -9,6 +9,7 @@ Käyttäjä voi lisätä työn sivustolle, jonka muut käyttäjät voivat hyväk
 # Dokumentaatio
 * [User-Stories ja SQL-kyselyt](https://github.com/nicholsss/Jobber/blob/master/Documentation/user_story.md)
 * [Tietokantakaavio ja CREATE TABLE lauseet](https://github.com/nicholsss/Jobber/blob/master/Documentation/Tietokantakaavio.md)
+* [Jatkokehitys ja puuttuvat ominaisuudet](https://github.com/nicholsss/Jobber/blob/master/Documentation/Jatkokehitys.md)
 
 # Käyttäjät
 Admin
