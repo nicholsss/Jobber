@@ -30,8 +30,19 @@ class Job(Base):
 
     @staticmethod
 
-    def interested_jobs():
+    def interested_jobs(accountID):
+
+        stmt = text("SELECT Job.id, Job.name,Job.salary,Job.description, CASE WHEN job.id IN (SELECT UJ.job_id FROM Account A LEFT JOIN userJobs UJ on A.id = UJ.account_id WHERE UJ.account_id = :accountID)"
+        " THEN 'Interested' ELSE 'Not interested' END FROM Job").params(accountID = accountID)
+        res = db.engine.execute(stmt)
+        response = []
+        for row in res:
+            response.append({"id":row[0],"name":row[1],"salary":row[2],"description":row[3],"interested":row[4],})
         
+        return response
+       ##smtm = text("SELECT *, CASE WHEN job.id IN (SELECT UJ.job_id FROM Account A LEFT JOIN userJobs UJ on A.id = UJ.account_id WHERE UJ.account_id = 1) THEN 'True' ELSE 'False' END FROM Job");
+
+#SELECT *, CASE WHEN job.id IN (SELECT UJ.job_id FROM Account A LEFT JOIN userJobs UJ on A.id = UJ.account_id WHERE UJ.account_id = 1) THEN True ELSE False END FROM Job
     
     @staticmethod
     def jobs_offers():

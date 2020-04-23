@@ -9,7 +9,14 @@ from application.questions.forms import questionForm
 
 @app.route("/jobs", methods=["GET"])
 def jobs_index():
-    return render_template("jobs/list.html", jobs = Job.query.all())
+
+        try:
+             return render_template("jobs/list.html", jobs = Job.interested_jobs(current_user.id))
+        except :
+         
+              return render_template("jobs/list.html", jobs = Job.query.all())
+    
+   
 
 @app.route("/jobs/new/")
 @login_required
@@ -65,15 +72,23 @@ def jobs_edit(job_id):
 def jobs_set_active(job_id):
 #Tästä tulee kiinnostunut, ja jokaisella käyttäjällä on on kiinostunt projektiin.
     
+
     j = Job.query.get(job_id)
-
-    j.intrest_user.append(current_user)
-
-    if(j.active == False):
-        j.active=True
+    bol = False
+    print("JOBIID", job_id)
+    
+    for x in current_user.interested:
+        if x.id == j.id:
+            bol = True
+            print("KAVIKO", job_id)
+    
+    
+    if(bol == False):
+        j.intrest_user.append(current_user)
          #j.r.append(current_user)
     else:
-        j.active=False
+        
+        j.intrest_user.remove(current_user)
     db.session().commit()
 
   
