@@ -8,7 +8,7 @@ Käyttäjä voi lisätä työn sivustolle, jonka muut käyttäjät voivat hyväk
 
 # Dokumentaatio
 * [User-Stories](https://github.com/nicholsss/Jobber/blob/master/Documentation/user_story.md)
-* [Tietokantakaavio](https://github.com/nicholsss/Jobber/blob/master/Documentation/UusiKaavio.png)
+* [Tietokantakaavio ja CREATE TABLE lauseet](https://github.com/nicholsss/Jobber/blob/master/Documentation/Tietokantakaavio.md)
 
 # Käyttäjät
 Admin
