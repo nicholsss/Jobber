@@ -1,4 +1,5 @@
 from application import db
+from sqlalchemy.sql import text
 from application.models import Base
 
 user_jobs = db.Table('userJobs',
@@ -27,19 +28,18 @@ class Job(Base):
         self.active = False
         self.account_id = account_id
 
-    #@staticmethod
-   # def user_intrested_jobs():
-        #stmt =  text("SELECT * FROM Account,job,userJobs"
-        ##"LEFT JOIN userJobs ON userJobs.account_id = Account.id AND userJobs.job_id = Job_id")
+    @staticmethod
+
+    def interested_jobs():
+        
     
-        #stmt = text("SELECT * FROM Account A,Job J,Userjobs UJ CASE WHEN WHERE A.account_id = UJ.account_id AND J.job_id = UJ.job_id"
-        #"LEFT JOIN  ")
-        # JOTAIN TÄllästä alikyselyillä stmt = text("SELECT *, CASE WHEN account.account_id IN userJobs.account_id AND  job.job_id IN userJobs.job_id THEN TRUE ELSE FALSE END FROM account LEFT JOIN userJobs ON ")
-
-
-
-        #response = []
-        #for row in res:
-           # response.append({"id":row[0], "name":row[1],"question":row[2]})
-
-        #return response
+    @staticmethod
+    def jobs_offers():
+        stmt = text("SELECT COUNT(job.id) FROM Job")
+    
+        res = db.engine.execute(stmt)
+        response = []
+        for row in res:
+            response.append({"count":row[0]})
+        
+        return response

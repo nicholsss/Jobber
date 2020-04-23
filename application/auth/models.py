@@ -28,14 +28,11 @@ class User(Base):
     question = db.relationship('Question', backref="account")
     
 
-    def __init__(self,username, roles):
+    def __init__(self,username,password, roles):
        # self.name = name
         self.username = username
-        #self.password = password
+        self.password_hash = generate_password_hash(password)       
         self.roles = roles
-    
-    def set_password(self, password):
-        self.password_hash = generate_password_hash(password)
 
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)

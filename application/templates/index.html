@@ -7,17 +7,30 @@ class="jumbotron">
 
   <p class="lead">Users with questions in our system</p>
 
-  <hr class="my-4">
+
    {% if most_questions is defined %}
      
       
       <ul>
         {% for user in most_questions %}
         <li>
-          {{user.name}} {{user.question}}
+          {{user.name}} with {{user.question}} question
         </li>
         {% endfor %}
       </ul>
       {% endif %}
+      <hr class="my-4">
+
+      {% if offers is defined %}
+
+      {% for job in offers %}
+      <p class="lead">Job offer amount currently is {{job.count}}</p>
+      
+      
+      {% endfor %}
+     
+      {% endif %}
+        
+      
     </div>
 {% endblock %}

@@ -17,8 +17,9 @@ def auth_login():
     if not user:
          return render_template("auth/loginform.html", form = form,
                                error = "No such username or password")
-    lol = user.check_password(password=form.password.data)
-    if not lol:
+    passu = user.check_password(password=form.password.data)
+     
+    if not passu:
         return render_template("auth/loginform.html", form = form,
                                error = "No such username or password")
 
@@ -49,9 +50,9 @@ def auth_register():
         roles ="USER"
     
 
-    r = User(form.username.data,roles)
+    r = User(form.username.data,form.password.data, roles)
     db.session().add(r)
-    r.set_password(form.password.data)
+    #r.set_password(form.password.data)
     
     db.session().add(r)
 
