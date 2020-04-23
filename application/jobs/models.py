@@ -42,7 +42,7 @@ class Job(Base):
         return response
        ##smtm = text("SELECT *, CASE WHEN job.id IN (SELECT UJ.job_id FROM Account A LEFT JOIN userJobs UJ on A.id = UJ.account_id WHERE UJ.account_id = 1) THEN 'True' ELSE 'False' END FROM Job");
 
-#SELECT *, CASE WHEN job.id IN (SELECT UJ.job_id FROM Account A LEFT JOIN userJobs UJ on A.id = UJ.account_id WHERE UJ.account_id = 1) THEN True ELSE False END FROM Job
+#SELECT *, CASE WHEN job.id IN (SELECT UJ.job_id FROM Account A LEFT JOIN userJobs UJ on A.id = UJ.account_id WHERE UJ.account_id = 1) THEN True ELSE False END FROM Jobs
     
     @staticmethod
     def jobs_offers():
