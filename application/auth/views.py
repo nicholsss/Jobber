@@ -11,7 +11,6 @@ def auth_login():
         return render_template("auth/loginform.html", form = LoginForm())
 
     form = LoginForm(request.form)
-    # mahdolliset validoinnit
 
     user = User.query.filter_by(username=form.username.data).first()
     if not user:
@@ -22,8 +21,6 @@ def auth_login():
     if not passu:
         return render_template("auth/loginform.html", form = form,
                                error = "No such username or password")
-
-
     login_user(user)
     return redirect(url_for("index"))   
 
@@ -43,19 +40,16 @@ def auth_register():
         return render_template("auth/registerform.html", form = form,
                                error = "Username and password lenght need to be 3-12")
 
-
     if(form.username.data == "admin"):
         roles = "ADMIN"
     else:
         roles ="USER"
     
-
     r = User(form.username.data,form.password.data, roles)
     db.session().add(r)
     #r.set_password(form.password.data)
     
     db.session().add(r)
-
 
     try:    
         db.session().commit()
@@ -63,5 +57,4 @@ def auth_register():
         return render_template("auth/registerform.html", form = form,
                                error = "username must be unique")
     
-
     return redirect(url_for("auth_login"))

@@ -1,13 +1,8 @@
 from application import db
 from application.models import Base
 
-
-
-
 class Question(Base):
-    
 
-   
     content = db.Column(db.String(144), nullable=False)
     #answer = db.Column(db.String(144), nullable=False)
     account_id = db.Column(db.Integer, db.ForeignKey('account.id'), nullable=False)

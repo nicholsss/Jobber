@@ -5,65 +5,21 @@
 <div class="jumbotron">
   <h1 class="display-4"> {{job.name}}</h1>
   <p>{{job.salary}} €</p>
-  <hr class="my-4"> 
+  <hr class="my-4">
   <p>{{job.description}}</p>
   <hr class="my-4">
-  <form method ="POST" action="{{url_for('jobs_question', job_id = job.id)}}">
-    
-    
+  <form method="POST" action="{{url_for('jobs_question', job_id = job.id)}}">
     {{form.name (class='form-control')}}
-    <td><input class="btn btn-primary btn-block" type="submit" value="Ask a question"/></td>
+    <td><input class="btn btn-primary btn-block" type="submit" value="Ask a question" /></td>
   </form>
   <table>
-  <tr>
-    {% for question in job.question %}
+    <tr>
+      {% for question in job.question %}
     <tr>
       <td>{{question.content}}</td>
     </tr>
     {% endfor %}
-  </tr>
-</table>
-</div>
-<!--
-
-  <table>
-    <tr>
-      <th>job</th>
-      <th>salary</th>
-      <th>Active</th>
-      <th>username</th>
-      <th>description</th>
     </tr>
-    <tr>
-       
-        
-      <td>{{ job.name }} </td>
-      <td>{{ job.salary }}</td>
-      <td>{{ job.active }}</td>
-      <td>{{ user.username }}</td>
-      <td>{{job.description}}</td>
-       
-            
-    </tr>
-    
-   
-
-    <tr>
-      <form method ="POST" action="{{url_for('jobs_question', job_id = job.id)}}">
-      <td>{{form.name.label}}</td>
-      <td>{{form.name}}</td>
-      <td><input type="submit" value="Ask a question"/></td>
-    </form>
-    </tr>
-    <tr>
-      {% for question in job.question %}
-      <tr>
-        <td>{{question.content}}</td>
-      </tr>
-      {% endfor %}
-    </tr>
-    
-
   </table>
-  -->
-  {% endblock %}
+</div>
+{% endblock %}

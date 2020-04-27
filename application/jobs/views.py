@@ -76,8 +76,6 @@ def jobs_edit(job_id):
 @app.route("/jobs/active/<job_id>/", methods=["POST"])
 @login_required
 def jobs_set_active(job_id):
-#Tästä tulee kiinnostunut, ja jokaisella käyttäjällä on on kiinostunt projektiin.
-    
 
     j = Job.query.get(job_id)
     bol = False
@@ -87,7 +85,6 @@ def jobs_set_active(job_id):
         if x.id == j.id:
             bol = True
             print("KAVIKO", job_id)
-    
     
     if(bol == False):
         j.intrest_user.append(current_user)
@@ -111,13 +108,9 @@ def jobs_delete(job_id):
     Question.query.filter_by(job_id = job_id).delete()
 
     db.session().delete(j)
- 
     db.session().commit()
 
     return redirect(url_for("jobs_index"))
-
-
-
 
 @app.route("/jobs/", methods=["POST"])
 @login_required
@@ -126,15 +119,11 @@ def jobs_create():
     if not form.validate():
          
          return render_template("jobs/new.html", form = form)
-    #j = Job(request.form.get("name"), request.form.get("salary"), current_user.id)
+
     j = Job(form.name.data, form.salary.data, form.description.data, current_user.id)
 
     db.session().add(j)
-
-    #db.session().add(s)
     db.session().commit()
-
-    
 
     return redirect(url_for("jobs_index"))
 

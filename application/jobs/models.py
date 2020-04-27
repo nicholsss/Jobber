@@ -7,16 +7,10 @@ user_jobs = db.Table('userjobs',
     db.Column('account_id', db.Integer, db.ForeignKey('account.id'))
 )
 
-
 class Job(Base):
-    
-
-
     name = db.Column(db.String(144), nullable=False)
-
     salary = db.Column(db.Integer, nullable=False)
     active = db.Column(db.Boolean, nullable=False)
-    
     description = db.Column(db.String, nullable=False)
     account_id = db.Column(db.Integer, db.ForeignKey('account.id'), nullable=False)
     intrest_user = db.relationship('User', secondary = user_jobs, backref= db.backref('interested'), lazy=True)
@@ -27,7 +21,6 @@ class Job(Base):
         self.description = description
         self.active = False
         self.account_id = account_id
-
     @staticmethod
 
     def interested_jobs(accountID):
@@ -38,16 +31,12 @@ class Job(Base):
         response = []
         for row in res:
             response.append({"id":row[0],"name":row[1],"salary":row[2],"description":row[3],"interested":row[4]})
-        
-        return response
-       ##smtm = text("SELECT *, CASE WHEN job.id IN (SELECT UJ.job_id FROM Account A LEFT JOIN userJobs UJ on A.id = UJ.account_id WHERE UJ.account_id = 1) THEN 'True' ELSE 'False' END FROM Job");
 
-#SELECT *, CASE WHEN job.id IN (SELECT UJ.job_id FROM Account A LEFT JOIN userJobs UJ on A.id = UJ.account_id WHERE UJ.account_id = 1) THEN True ELSE False END FROM Jobs
+        return response
     
     @staticmethod
     def jobs_offers():
         stmt = text("SELECT COUNT(job.id) FROM Job")
-    
         res = db.engine.execute(stmt)
         response = []
         for row in res:

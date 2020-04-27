@@ -3,7 +3,6 @@ from flask import redirect,render_template,request,url_for
 from flask_login import login_required, current_user
 from application.questions.models import Question
 from application.questions.forms import questionForm
-#from application.auth.models import User
 
 @app.route('reviews/new/')
 @login_required

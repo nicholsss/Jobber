@@ -1,36 +1,31 @@
 {% extends "layout.html" %}
 
 {% block body %}
-<div
-class="jumbotron">
+<div class="jumbotron">
   <h1 class="display-4">MainPage</h1>
 
   <p class="lead">Users with questions in our system</p>
 
+  {% if most_questions is defined %}
 
-   {% if most_questions is defined %}
-     
-      
-      <ul>
-        {% for user in most_questions %}
-        <li>
-          {{user.name}} with {{user.question}} question
-        </li>
-        {% endfor %}
-      </ul>
-      {% endif %}
-      <hr class="my-4">
+  <ul>
+    {% for user in most_questions %}
+    <li>
+      {{user.name}} with {{user.question}} question
+    </li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+  <hr class="my-4">
 
-      {% if offers is defined %}
+  {% if offers is defined %}
 
-      {% for job in offers %}
-      <p class="lead">Job offer amount currently is {{job.count}}</p>
-      
-      
-      {% endfor %}
-     
-      {% endif %}
-        
-      
-    </div>
+  {% for job in offers %}
+  <p class="lead">Job offer amount currently is {{job.count}}</p>
+
+  {% endfor %}
+
+  {% endif %}
+
+</div>
 {% endblock %}

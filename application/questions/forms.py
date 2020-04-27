@@ -7,4 +7,3 @@ class questionForm(FlaskForm):
    
     class Meta:
         csrf = False
-#class answerForm(FlaskForm):
