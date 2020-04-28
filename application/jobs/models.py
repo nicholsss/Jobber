@@ -33,6 +33,11 @@ class Job(Base):
             response.append({"id":row[0],"name":row[1],"salary":row[2],"description":row[3],"interested":row[4]})
 
         return response
+
+    @staticmethod
+    def my_interested_jobs(accountID):
+        stmt = text("SELECT Account.username FROM Account")
+      
     
     @staticmethod
     def jobs_offers():
@@ -43,3 +48,5 @@ class Job(Base):
             response.append({"count":row[0]})
         
         return response
+    
+    

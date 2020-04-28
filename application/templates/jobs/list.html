@@ -14,7 +14,7 @@
         <p class="card-text">{{job.description}}</p>
         <p>{{ job.interested }}</p>
       </div>
-
+      {% if user is not defined %}
       <form method="POST" action="{{ url_for('jobs_set_active', job_id=job.id) }}">
         <input style="width: 90px;" type="submit" value="Interested" class="btn btn-primary btn-sm" />
       </form>
@@ -24,7 +24,9 @@
       <form method="POST" action="{{ url_for('jobs_delete', job_id=job.id) }}">
         <input style="width: 90px;" class="btn btn-danger btn-sm" type="submit" value="delete job" />
       </form>
+      {% endif %}
     </div>
+    
     {% endfor %}
   </div>
 </div>

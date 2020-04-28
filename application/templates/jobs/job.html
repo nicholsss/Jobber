@@ -7,11 +7,14 @@
   <p>{{job.salary}} €</p>
   <hr class="my-4">
   <p>{{job.description}}</p>
+  
   <hr class="my-4">
+  {% if user is defined %}
   <form method="POST" action="{{url_for('jobs_question', job_id = job.id)}}">
     {{form.name (class='form-control')}}
     <td><input class="btn btn-primary btn-block" type="submit" value="Ask a question" /></td>
   </form>
+  {% endif %}
   <table>
     <tr>
       {% for question in job.question %}

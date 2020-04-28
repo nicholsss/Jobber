@@ -11,18 +11,12 @@ from application.questions.forms import questionForm
 def jobs_index():
 
     if current_user.is_authenticated:
-        return render_template("jobs/list.html", jobs = Job.interested_jobs(current_user.id))
+        return render_template("jobs/list.html", user = current_user,jobs = Job.interested_jobs(current_user.id))
    
     else:
         
-        return render_template("jobs/list.html", jobs = Job.query.all())
-        #try:
-         #    return render_template("jobs/list.html", jobs = Job.interested_jobs(current_user.id))
-        #except :
-         
-         #    s return render_template("jobs/list.html", jobs = Job.query.all())
+        return render_template("jobs/list.html",user = current_user, jobs = Job.query.all())
     
-   
 
 @app.route("/jobs/new/")
 @login_required
@@ -36,7 +30,10 @@ def jobs_edit_form(job_id):
 
 @app.route("/jobs/view/<job_id>/")
 def jobs_show(job_id):
-    return render_template("jobs/job.html", form = questionForm(), job = Job.query.get(job_id), user= User.query.get(Job.query.get(job_id).account_id))
+    if current_user.is_authenticated:
+        return render_template("jobs/job.html", form = questionForm(), job = Job.query.get(job_id),users=current_user, user = User.query.get(Job.query.get(job_id).account_id))
+    else:
+          return render_template("jobs/job.html", form = questionForm(), job = Job.query.get(job_id))
 
 @app.route("/jobs/question/<job_id>/", methods =['POST'])
 @login_required
@@ -88,7 +85,7 @@ def jobs_set_active(job_id):
     
     if(bol == False):
         j.intrest_user.append(current_user)
-         #j.r.append(current_user)
+        
     else:
         
         j.intrest_user.remove(current_user)
@@ -126,5 +123,10 @@ def jobs_create():
     db.session().commit()
 
     return redirect(url_for("jobs_index"))
+
+#@app.route("/jobs/my_jobs", methods =["GET"])
+#@login_required
+#return render_template("jobs/list.html",user = current_user, jobs = Job.query.all())
+
 
     
