@@ -14,21 +14,27 @@
         </a>
         <h6 class="card-subtitle mb-2 text-muted">{{job.salary}} €</h6>
         <p class="card-text">{{job.description}}</p>
+        {% if user.id != job.account_id %}
         <b><p>{{ job.interested }}</p></b>
-        <p>{{job.account_id}}</p>
+        {% endif %}
+       
       </div>
       {% if user is defined %}
+      
+      {% if user.id != job.account_id %}
       <form method="POST" action="{{ url_for('jobs_set_active', job_id=job.id) }}">
         <input style="width: 90px;" type="submit" value="Interested" class="btn btn-primary btn-sm" />
       </form>
-      {% if job.account_id == user.id %}
+      {% endif %}
+      {% if job.account_id == user.id or user.username == 'admin'%}
       <form action="{{ url_for('jobs_edit_form', job_id=job.id) }}">
         <input style="width: 90px;" class="btn btn-warning btn-sm" type="submit" value="Edit Job " />
       </form>
-      {% endif %}
+      
       <form method="POST" action="{{ url_for('jobs_delete', job_id=job.id) }}">
         <input style="width: 90px;" class="btn btn-danger btn-sm" type="submit" value="delete job" />
       </form>
+      {% endif %}
       {% endif %}
     </div>
 
