@@ -11,7 +11,7 @@ from application.questions.forms import questionForm
 def jobs_index():
 
     if current_user.is_authenticated:
-        return render_template("jobs/list.html", user = current_user,jobs = Job.interested_jobs(current_user.id))
+        return render_template("jobs/list.html",user = current_user,jobs = Job.interested_jobs(current_user.id))
    
     else:
         

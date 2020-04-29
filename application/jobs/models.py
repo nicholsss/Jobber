@@ -26,11 +26,11 @@ class Job(Base):
     def interested_jobs(accountID):
 
         stmt = text("SELECT Job.id, Job.name, Job.salary,Job.description, CASE WHEN Job.id IN (SELECT UJ.job_id FROM Account A LEFT JOIN userjobs UJ on A.id = UJ.account_id WHERE UJ.account_id = :accountID)"
-        " THEN 'Interested' ELSE 'Not interested' END FROM Job").params(accountID = accountID)
+        " THEN 'Interested' ELSE 'Not interested' END, Job.account_id FROM Job").params(accountID = accountID)
         res = db.engine.execute(stmt)
         response = []
         for row in res:
-            response.append({"id":row[0],"name":row[1],"salary":row[2],"description":row[3],"interested":row[4]})
+            response.append({"id":row[0],"name":row[1],"salary":row[2],"description":row[3],"interested":row[4], "account_id":row[5]})
 
         return response
 
