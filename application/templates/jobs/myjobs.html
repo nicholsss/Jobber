@@ -2,47 +2,74 @@
 
 {% block body %}
 <div class="container">
-    <h1>Jobs That i'm intrested</h1>
-    <div class="row">
-        
-
-        {% for job in jobs %}
-
-        {% if job.interested == 'Interested' %}
+  <h1>Jobs That i'm intrested</h1>
+  <div class="row">
 
 
-        <div class="card text-center" style="width: 18rem;">
-            <div class="card-body">
-              <a href="{{ url_for('jobs_show', job_id=job.id) }}">
-                <h5 class="card-title">{{job.name}}</h5>
-              </a>
-              <h6 class="card-subtitle mb-2 text-muted">{{job.salary}} €</h6>
-              <p class="card-text">{{job.description}}</p>
-              <p>{{ job.interested }}</p>
-            </div>
-            {% if user is defined %}
-            <form method="POST" action="{{ url_for('jobs_set_active', job_id=job.id) }}">
-              <input style="width: 90px;" type="submit" value="Interested" class="btn btn-primary btn-sm" />
-            </form>
-            
-            {% endif %}
-          </div>
-        
-        {% endif %}
-       
+    {% for job in jobs %}
 
-
-        {% endfor %}
+    {% if job.interested == 'Interested' %}
 
 
 
 
+    <div class="card text-center" style="width: 18rem;">
+      <div class="card-body">
+        <a href="{{ url_for('jobs_show', job_id=job.id) }}">
+          <h5 class="card-title">{{job.name}}</h5>
+        </a>
+        <h6 class="card-subtitle mb-2 text-muted">{{job.salary}} €</h6>
+        <p class="card-text">{{job.description}}</p>
+        <p>{{ job.interested }}</p>
+      </div>
+      {% if user is defined %}
+      <form method="POST" action="{{ url_for('jobs_set_active', job_id=job.id) }}">
+        <input style="width: 90px;" type="submit" value="Interested" class="btn btn-primary btn-sm" />
+      </form>
+
+      {% endif %}
     </div>
-    <div class="row">
-        <ul>
-            <li>Jobs that i have listed</li>
-        </ul>
 
+    {% endif %}
+
+
+
+    {% endfor %}
+
+
+
+
+  </div>
+  <h1>My listed jobs</h1>
+  <div class="row">
+    
+    {% for j in job %}
+    <div class="card text-center" style="width: 18rem;">
+      <div class="card-body">
+        <a href="{{ url_for('jobs_show', job_id=job.id) }}">
+          <h5 class="card-title">{{j.name}}</h5>
+        </a>
+        <h6 class="card-subtitle mb-2 text-muted">{{j.salary}} €</h6>
+        <p class="card-text">{{j.description}}</p>
+        
+        
+        <form action="{{ url_for('jobs_edit_form', job_id=j.id) }}">
+          <input style="width: 90px;" class="btn btn-warning btn-sm" type="submit" value="Edit Job " />
+        </form>
+        
+        <form method="POST" action="{{ url_for('jobs_delete', job_id=j.id) }}">
+          <input style="width: 90px;" class="btn btn-danger btn-sm" type="submit" value="delete job" />
+        </form>
+        
+      </div>
+      
     </div>
+
+    
+
+
+    {% endfor %}
+
+  </div>
 </div>
 {% endblock %}

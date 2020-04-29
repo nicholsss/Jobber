@@ -15,7 +15,7 @@ def jobs_index():
    
     else:
         
-        return render_template("jobs/list.html",jobs = Job.query.all())
+        return render_template("jobs/list.html", jobs = Job.query.all())
     
 
 @app.route("/jobs/new/")
@@ -32,7 +32,7 @@ def my_account():
 @app.route("/jobs/myjobs")
 @login_required
 def my_jobs():
-    return render_template("jobs/myjobs.html",user = current_user,jobs = Job.interested_jobs(current_user.id))
+    return render_template("jobs/myjobs.html",user = current_user,jobs = Job.interested_jobs(current_user.id), job = current_user.jobs)
 
 @app.route("/jobs/edit/<job_id>/")
 @login_required
@@ -102,7 +102,7 @@ def jobs_set_active(job_id):
         j.intrest_user.remove(current_user)
     db.session().commit()
 
-  
+   
     return redirect(url_for("jobs_index"))
 
 @app.route("/jobs/delete/<job_id>/", methods=["POST"])
