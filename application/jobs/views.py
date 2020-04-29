@@ -15,7 +15,7 @@ def jobs_index():
    
     else:
         
-        return render_template("jobs/list.html",user = current_user, jobs = Job.query.all())
+        return render_template("jobs/list.html",jobs = Job.query.all())
     
 
 @app.route("/jobs/new/")
@@ -33,7 +33,7 @@ def jobs_show(job_id):
     if current_user.is_authenticated:
         return render_template("jobs/job.html", form = questionForm(), job = Job.query.get(job_id),users=current_user, user = User.query.get(Job.query.get(job_id).account_id))
     else:
-          return render_template("jobs/job.html", form = questionForm(), job = Job.query.get(job_id))
+          return render_template("jobs/job.html", form = questionForm(), job = Job.query.get(job_id), author = Job.job_author(job_id))
 
 @app.route("/jobs/question/<job_id>/", methods =['POST'])
 @login_required

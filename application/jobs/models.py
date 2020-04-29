@@ -49,4 +49,18 @@ class Job(Base):
         
         return response
     
-    
+
+    @staticmethod
+    def job_author(accountID):
+       #stmt = text("SELECT A.username from account A WHERE A.id = (SELECT account_id FROM Job WHERE A.id = :accountID)").params(accountID = accountID)
+        stmt = text("SELECT A.username FROM Account A, Job j WHERE j.id = :accountID AND J.account_id = :accountID").params(accountID = accountID)
+        res = db.engine.execute(stmt)
+        response = []
+        for row in res:
+            response.append({"author":row[0]})
+        
+        return response
+    #SELECT A.id from account A WHERE A.id = (SELECT account_id FROM Job WHERE A.id == account_id);
+   # SELECT A.username FROM Account A WHERE account_id = 1;
+    #SELECT A.username FROM Account A, Job j WHERE A.id = 2 AND J.account_id = 2;
+    #SELECT A.username FROM Account A, Job j WHERE j.id = 1 AND J.account_id = 1

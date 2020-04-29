@@ -5,6 +5,7 @@
   <div class="row">
 
     {% for job in jobs %}
+
     <div class="card text-center" style="width: 18rem;">
       <div class="card-body">
         <a href="{{ url_for('jobs_show', job_id=job.id) }}">
@@ -14,7 +15,7 @@
         <p class="card-text">{{job.description}}</p>
         <p>{{ job.interested }}</p>
       </div>
-      {% if user is not defined %}
+      {% if user is defined %}
       <form method="POST" action="{{ url_for('jobs_set_active', job_id=job.id) }}">
         <input style="width: 90px;" type="submit" value="Interested" class="btn btn-primary btn-sm" />
       </form>
@@ -26,7 +27,7 @@
       </form>
       {% endif %}
     </div>
-    
+
     {% endfor %}
   </div>
 </div>
