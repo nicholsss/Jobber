@@ -13,7 +13,7 @@
         </a>
         <h6 class="card-subtitle mb-2 text-muted">{{job.salary}} €</h6>
         <p class="card-text">{{job.description}}</p>
-        <p>{{ job.interested }}</p>
+        <b><p>{{ job.interested }}</p></b>
       </div>
       {% if user is defined %}
       <form method="POST" action="{{ url_for('jobs_set_active', job_id=job.id) }}">

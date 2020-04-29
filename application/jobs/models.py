@@ -60,6 +60,12 @@ class Job(Base):
             response.append({"author":row[0]})
         
         return response
+
+    @staticmethod
+    def jobs_listed(jobID):
+        stmt = text("SELECT * FROM Account A, Job J WHERE A.id = 1 AND J.account_id = A.id;")
+
+    # SELECT * FROM Account A, Job J WHERE A.id = 1 AND J.account_id = A.id;
     #SELECT A.id from account A WHERE A.id = (SELECT account_id FROM Job WHERE A.id == account_id);
    # SELECT A.username FROM Account A WHERE account_id = 1;
     #SELECT A.username FROM Account A, Job j WHERE A.id = 2 AND J.account_id = 2;

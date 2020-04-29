@@ -57,4 +57,3 @@ class User(Base):
     #Eniten tienannut
 
     #Eniten töistä kiinnostunut
-    

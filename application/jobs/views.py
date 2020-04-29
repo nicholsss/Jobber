@@ -23,6 +23,17 @@ def jobs_index():
 def jobs_form():
     return render_template("jobs/new.html", form = JobForm())
 
+
+@app.route("/account")
+@login_required
+def my_account():
+    return render_template("jobs/account.html", user = current_user)
+
+@app.route("/jobs/myjobs")
+@login_required
+def my_jobs():
+    return render_template("jobs/myjobs.html",user = current_user,jobs = Job.interested_jobs(current_user.id))
+
 @app.route("/jobs/edit/<job_id>/")
 @login_required
 def jobs_edit_form(job_id):
@@ -33,7 +44,7 @@ def jobs_show(job_id):
     if current_user.is_authenticated:
         return render_template("jobs/job.html", form = questionForm(), job = Job.query.get(job_id),users=current_user, user = User.query.get(Job.query.get(job_id).account_id))
     else:
-          return render_template("jobs/job.html", form = questionForm(), job = Job.query.get(job_id), author = Job.job_author(job_id))
+          return render_template("jobs/job.html", form = questionForm(), job = Job.query.get(job_id), author = Job.job_author(job_id), user = User.query.get(Job.query.get(job_id).account_id))
 
 @app.route("/jobs/question/<job_id>/", methods =['POST'])
 @login_required
@@ -124,9 +135,6 @@ def jobs_create():
 
     return redirect(url_for("jobs_index"))
 
-#@app.route("/jobs/my_jobs", methods =["GET"])
-#@login_required
-#return render_template("jobs/list.html",user = current_user, jobs = Job.query.all())
 
 
     
