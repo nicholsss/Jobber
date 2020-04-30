@@ -42,7 +42,7 @@
   </div>
   <h1>My listed jobs</h1>
   <div class="row">
-    
+
     {% for j in job %}
     <div class="card text-center" style="width: 18rem;">
       <div class="card-body">
@@ -51,21 +51,21 @@
         </a>
         <h6 class="card-subtitle mb-2 text-muted">{{j.salary}} €</h6>
         <p class="card-text">{{j.description}}</p>
-        
-        
+
+
         <form action="{{ url_for('jobs_edit_form', job_id=j.id) }}">
           <input style="width: 90px;" class="btn btn-warning btn-sm" type="submit" value="Edit Job " />
         </form>
-        
+
         <form method="POST" action="{{ url_for('jobs_delete', job_id=j.id) }}">
           <input style="width: 90px;" class="btn btn-danger btn-sm" type="submit" value="delete job" />
         </form>
-        
+
       </div>
-      
+
     </div>
 
-    
+
 
 
     {% endfor %}

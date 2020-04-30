@@ -2,10 +2,13 @@
 
 {% block body %}
 <div class="jumbotron">
-  <h1 class="display-4">MainPage</h1>
+  <h1 class="display-4">Jobber</h1>
+  <p>U can use jobber to browse jobs for fast money or even u can add your own job offers here</p>
+ 
 
-  <p class="lead">Users with questions in our system</p>
-
+  <p class="lead">U can ask Questions about the jobs like</p>
+  <p>Questions in our system</p>
+  
   {% if most_questions is defined %}
 
   <ul>
@@ -21,7 +24,7 @@
   {% if offers is defined %}
 
   {% for job in offers %}
-  <p class="lead">Job offer amount currently is {{job.count}}</p>
+  <p class="lead">We currently have {{job.count}} job offer in our system</p>
 
   {% endfor %}
 
