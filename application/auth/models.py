@@ -39,9 +39,9 @@ class User(Base):
 
     @staticmethod
     def most_questions_asked():
-        stmt = text("SELECT Account.id, Account.username, COUNT(Question.id) FROM Account"
-                    " LEFT JOIN Question ON Question.account_id = Account.id"
-                    " GROUP BY Account.id"
+        stmt = text("SELECT A.id, A.username, COUNT(Question.id) FROM account A"
+                    " LEFT JOIN Question ON Question.account_id = A.id"
+                    " GROUP BY A.id"
                     " HAVING COUNT(Question.id) >0")
         res = db.engine.execute(stmt)
 
