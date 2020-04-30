@@ -3,7 +3,7 @@ from wtforms import StringField, validators, IntegerField, TextAreaField
 
 
 class JobForm(FlaskForm):
-    name = StringField("Job name", [validators.Length(min=3, max=12)])
+    name = StringField("Job name", [validators.Length(min=3, max=26)])
     salary = IntegerField("Salary", [validators.NumberRange(max=1000000)])
     description = TextAreaField(
         'Job Description', [validators.Length(max=600)])
