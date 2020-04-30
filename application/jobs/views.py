@@ -42,7 +42,7 @@ def jobs_show(job_id):
     if current_user.is_authenticated:
         return render_template("jobs/job.html", form=questionForm(), job=Job.query.get(job_id), users=current_user, user=User.query.get(Job.query.get(job_id).account_id))
     else:
-        return render_template("jobs/job.html", form=questionForm(), job=Job.query.get(job_id), user=User.query.get(Job.query.get(job_id).account_id))
+        return render_template("jobs/job.html", form=questionForm(), job=Job.query.get(job_id),users=current_user, user=User.query.get(Job.query.get(job_id).account_id))
 
 
 @app.route("/jobs/question/<job_id>/", methods=['POST'])
@@ -130,6 +130,18 @@ def jobs_set_active(job_id, k):
 
         return redirect(url_for("jobs_index"))
 
+@app.route("/jobs/question/delete/<question_id>/", methods=["POST"])
+@login_required
+def question_delete(question_id):
+    j = Question.query.get(question_id)
+    if j.account_id != current_user.id and current_user.roles != 'ADMIN':
+
+        return login_manager.unauthorized()
+
+    db.session().delete(j)
+    db.session().commit()
+
+    return redirect(url_for("jobs_index"))
 
 @app.route("/jobs/delete/<job_id>/", methods=["POST"])
 @login_required

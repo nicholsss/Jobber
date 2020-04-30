@@ -17,14 +17,26 @@
     <td><input class="btn btn-primary btn-block" type="submit" value="Ask a question" /></td>
   </form>
   {% endif %}
-  <table>
-    <tr>
-      {% for question in job.question %}
-    <tr>
-      <td>{{question.content}}</td>
-    </tr>
-    {% endfor %}
-    </tr>
-  </table>
+
+
+  {% for question in job.question %}
+
+  
+  <div class="col-sm-8">
+    <h4 class="d-inline-block">{{question.content}} </h4>
+    {% if question.account_id == users.id or user.username == 'admin'%}
+        <button style="margin-top: 10px;" class="btn btn-danger btn-sm">
+      <form method="POST" action="{{ url_for('question_delete', question_id=question.id) }}">
+        <input class="btn btn-danger btn-sm" type="submit" value="Delete Question" />
+      </form>
+    </button>
+    {% endif %}
+  </div>
+ 
+
+  {% endfor %}
+
+
+
 </div>
 {% endblock %}

@@ -29,3 +29,4 @@ Sovellus on käytettävissä osoitteessa
 - Työn lisääjä pystyy muokkaamaan tekemäänsä ilmoitusta **Edit** napista
 - Työn lisääjä pystyy poistamaan tekemänsä ilmoituksen **Delete** napista.
 - Käyttäjä voi kirjautua ulos sovelluksesta painamalla **Logout** napista
+- Käyttäjä voi poistaa kommenttinsa **Delete Question** napista
