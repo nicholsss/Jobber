@@ -23,24 +23,23 @@
           <li class="nav-item">
             <a class="nav-link" href="{{ url_for('jobs_index') }} ">List Jobs</a>
           </li>
-         
+
           <li class="nav-item">
             <a class="nav-link" href="{{ url_for('jobs_form') }} ">Add a Job</a>
           </li>
-          <li class="nav-item"><a class="nav-link"  href="{{url_for('my_jobs') }}">My jobs</a>
-        </li>
+          <li class="nav-item"><a class="nav-link" href="{{url_for('my_jobs') }}">My jobs</a>
+          </li>
         </ul>
-   
-      
+
+
         <div class="form-inline mt-2 mt-md-0">
           {% if current_user.is_authenticated %}
-         
-          <p>
-            Logged in <a href="{{url_for('my_account')}}"> Account</a> {{ current_user.username }}. <a
+
+          <span style="color: white;" class="nav-item">
+            Logged in {{ current_user.username }} <a
               href="{{ url_for('auth_logout') }}">Logout</a>
           </p>
           {% else %}
-
           <ul>
             <li>
               <a href="{{ url_for('auth_login') }}">Log in </a>

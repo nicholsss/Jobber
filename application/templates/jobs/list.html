@@ -3,10 +3,10 @@
 {% block body %}
 <div class="container">
   <div class="row">
-
+    <h1>Currently available jobs where u can show your intrest</h1>
     {% for job in jobs %}
-    
-    
+
+
     <div class="card text-center" style="width: 18rem;">
       <div class="card-body">
         <a href="{{ url_for('jobs_show', job_id=job.id) }}">
@@ -15,12 +15,14 @@
         <h6 class="card-subtitle mb-2 text-muted">{{job.salary}} €</h6>
         <p class="card-text">{{job.description}}</p>
         {% if user is not defined or user.id != job.account_id %}
-        <b><p>{{ job.interested }}</p></b>
+        <b>
+          <p>{{ job.interested }}</p>
+        </b>
         {% endif %}
-       
+
       </div>
       {% if user is defined %}
-      
+
       {% if user.id != job.account_id %}
       <form method="POST" action="{{ url_for('jobs_set_active', job_id=job.id, k = 0) }}">
         <input style="width: 90px;" type="submit" value="Interested" class="btn btn-primary btn-sm" />
@@ -30,7 +32,7 @@
       <form action="{{ url_for('jobs_edit_form', job_id=job.id) }}">
         <input style="width: 90px;" class="btn btn-warning btn-sm" type="submit" value="Edit Job " />
       </form>
-      
+
       <form method="POST" action="{{ url_for('jobs_delete', job_id=job.id) }}">
         <input style="width: 90px;" class="btn btn-danger btn-sm" type="submit" value="delete job" />
       </form>

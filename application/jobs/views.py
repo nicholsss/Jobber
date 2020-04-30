@@ -18,17 +18,11 @@ def jobs_index():
 
         return render_template("jobs/list.html", jobs=Job.query.all())
 
-
+        
 @app.route("/jobs/new/")
 @login_required
 def jobs_form():
     return render_template("jobs/new.html", form=JobForm())
-
-
-@app.route("/account")
-@login_required
-def my_account():
-    return render_template("jobs/account.html", user=current_user)
 
 
 @app.route("/jobs/myjobs")

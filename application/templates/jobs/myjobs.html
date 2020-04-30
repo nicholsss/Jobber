@@ -23,22 +23,17 @@
       <form method="POST" action="{{ url_for('jobs_set_active', job_id=job.id, k=1) }}">
         <input style="width: 90px;" type="submit" value="Interested" class="btn btn-primary btn-sm" />
       </form>
-      
+
       <form method="POST" action="{{ url_for('job_set_done', job_id=job.id) }}">
         <input style="width: 90px;" type="submit" value="set Done" class="btn btn-primary btn-sm" />
       </form>
-    
+
       {% endif %}
     </div>
 
     {% endif %}
 
-
-
     {% endfor %}
-
-
-
 
   </div>
   <h1>My listed jobs</h1>
@@ -53,7 +48,6 @@
         <h6 class="card-subtitle mb-2 text-muted">{{j.salary}} €</h6>
         <p class="card-text">{{j.description}}</p>
 
-
         <form action="{{ url_for('jobs_edit_form', job_id=j.id) }}">
           <input style="width: 90px;" class="btn btn-warning btn-sm" type="submit" value="Edit Job " />
         </form>
@@ -65,9 +59,6 @@
       </div>
 
     </div>
-
-
-
 
     {% endfor %}
 

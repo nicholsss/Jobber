@@ -50,7 +50,6 @@ def auth_register():
 
     r = User(form.username.data, form.password.data, roles)
     db.session().add(r)
-    # r.set_password(form.password.data)
 
     db.session().add(r)
 

@@ -50,5 +50,3 @@ class User(Base):
             response.append({"id": row[0], "name": row[1], "question": row[2]})
 
         return response
-    # Eniten tienannut
-    # Eniten töistä kiinnostunut
