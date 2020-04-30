@@ -79,20 +79,39 @@ def jobs_edit(job_id):
     db.session().commit()
     return redirect(url_for("jobs_index"))
 
-
-
-@app.route("/jobs/active/<job_id>/", methods=["POST"])
+@app.route('/jobs/myjobs/<job_id>/', methods=["POST"])
 @login_required
-def jobs_set_active(job_id):
-
+def job_set_done(job_id):
     j = Job.query.get(job_id)
+    u = current_user
     bol = False
-    print("JOBIID", job_id)
-    
+
+    u.earned = u.earned + j.salary
+
     for x in current_user.interested:
         if x.id == j.id:
             bol = True
-            print("KAVIKO", job_id)
+    
+    if(bol == False):
+        j.intrest_user.append(current_user)
+        
+    else:
+        
+        j.intrest_user.remove(current_user)
+
+    db.session().commit()
+    
+    return redirect(url_for("my_jobs"))
+
+@app.route("/jobs/active/<job_id>/<k>/", methods=["POST"])
+@login_required
+def jobs_set_active(job_id,k):
+
+    j = Job.query.get(job_id)
+    bol = False
+    for x in current_user.interested:
+        if x.id == j.id:
+            bol = True
     
     if(bol == False):
         j.intrest_user.append(current_user)
@@ -101,9 +120,14 @@ def jobs_set_active(job_id):
         
         j.intrest_user.remove(current_user)
     db.session().commit()
-
    
-    return redirect(url_for("jobs_index"))
+    if k == '1':
+        return redirect(url_for("my_jobs")) 
+          
+    else:   
+        
+        return redirect(url_for("jobs_index")) 
+       
 
 @app.route("/jobs/delete/<job_id>/", methods=["POST"])
 @login_required

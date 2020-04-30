@@ -8,13 +8,9 @@ class User(Base):
 
     __tablename__ = "account"
   
-    id = db.Column(db.Integer, primary_key=True)
-    date_created = db.Column(db.DateTime, default=db.func.current_timestamp())
-    date_modified = db.Column(db.DateTime, default=db.func.current_timestamp(),
-                              onupdate=db.func.current_timestamp())
-
     username = db.Column(db.String(144), nullable=False, unique=True)
     password_hash = db.Column(db.String(144), nullable=False)
+    earned = db.Column(db.Integer, nullable=False)
     roles = db.Column(db.String(144), nullable=False)
     jobs = db.relationship("Job", backref="account",lazy=True)
     question = db.relationship('Question', backref="account")
@@ -22,8 +18,10 @@ class User(Base):
     def __init__(self,username,password, roles):
        # self.name = name
         self.username = username
-        self.password_hash = generate_password_hash(password)       
+        self.password_hash = generate_password_hash(password)
+        self.earned = 0;     
         self.roles = roles
+        
 
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)

@@ -23,15 +23,15 @@
           <li class="nav-item">
             <a class="nav-link" href="{{ url_for('jobs_index') }} ">List Jobs</a>
           </li>
-          {% if current_user.is_authenticated %}
+         
           <li class="nav-item">
             <a class="nav-link" href="{{ url_for('jobs_form') }} ">Add a Job</a>
           </li>
           <li class="nav-item"><a class="nav-link"  href="{{url_for('my_jobs') }}">My jobs</a>
         </li>
         </ul>
-        {% endif %}
-      </div>
+   
+      
         <div class="form-inline mt-2 mt-md-0">
           {% if current_user.is_authenticated %}
          

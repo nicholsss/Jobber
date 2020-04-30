@@ -3,6 +3,7 @@
 {% block body %}
 <div class="container">
   <h1>Jobs That i'm intrested</h1>
+  <p> U have earned {{user.earned}}</p>
   <div class="row">
 
 
@@ -11,8 +12,8 @@
     {% if job.interested == 'Interested' %}
 
 
-
-
+    
+    <h1>job.nimi</h1>
     <div class="card text-center" style="width: 18rem;">
       <div class="card-body">
         <a href="{{ url_for('jobs_show', job_id=job.id) }}">
@@ -23,10 +24,14 @@
         <p>{{ job.interested }}</p>
       </div>
       {% if user is defined %}
-      <form method="POST" action="{{ url_for('jobs_set_active', job_id=job.id) }}">
+      <form method="POST" action="{{ url_for('jobs_set_active', job_id=job.id, k=1) }}">
         <input style="width: 90px;" type="submit" value="Interested" class="btn btn-primary btn-sm" />
       </form>
-
+      
+      <form method="POST" action="{{ url_for('job_set_done', job_id=job.id) }}">
+        <input style="width: 90px;" type="submit" value="set Done" class="btn btn-primary btn-sm" />
+      </form>
+    
       {% endif %}
     </div>
 
@@ -46,7 +51,7 @@
     {% for j in job %}
     <div class="card text-center" style="width: 18rem;">
       <div class="card-body">
-        <a href="{{ url_for('jobs_show', job_id=job.id) }}">
+        <a href="{{ url_for('jobs_show', job_id=j.id) }}">
           <h5 class="card-title">{{j.name}}</h5>
         </a>
         <h6 class="card-subtitle mb-2 text-muted">{{j.salary}} €</h6>

@@ -22,7 +22,7 @@
       {% if user is defined %}
       
       {% if user.id != job.account_id %}
-      <form method="POST" action="{{ url_for('jobs_set_active', job_id=job.id) }}">
+      <form method="POST" action="{{ url_for('jobs_set_active', job_id=job.id, k = 0) }}">
         <input style="width: 90px;" type="submit" value="Interested" class="btn btn-primary btn-sm" />
       </form>
       {% endif %}
