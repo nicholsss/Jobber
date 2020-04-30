@@ -10,6 +10,7 @@ CREATE TABLE account (
         date_modified DATETIME,
         username VARCHAR(144) NOT NULL,
         password VARCHAR(144) NOT NULL,
+        earned INTEGER NOT NULL,
         roles VARCHAR(144) NOT NULL,
         PRIMARY KEY (id),
         UNIQUE (username)

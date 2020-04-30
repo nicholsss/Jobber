@@ -1,8 +1,10 @@
 # Jobber
 
 ## Kuvaus
-Käyttäjä voi lisätä työn sivustolle, johon muut käyttäjät voivat ilmoittaa kiinnostuksensa. Työn sivulla näkyy lista kiinnostuneita käyttäjistä. Työn luoja pystyy näkemään käyttäjien puhelinnumeron, jonka avulla hän pystyy ottamaan yhteyttä haluamiinsa henkiöihin.
-Työntekijä sovelluksessa lisätä tekemänsä työn palkan tilastoihinsa, josta hän pystyy seuraamaan tienaus historiaansa. Käyttäjä voi myös esittää kysymyksiä työhön työn sivustolla.
+Käyttäjä voi lisätä työn sivustolle, johon muut käyttävät voivat
+ilmoittaa kiinnostuksensa. Työn sivulta löytyy tiedot työstä, sekä käyttäjä voi esittää kysymyksiä siellä. Käyttäjä pystyy myös jättämään
+tietonsa jolla hänet voi saada kiinni. Työn lisääjä pystyy muokkaamaan luomaansa työtä. Käyttäjä pystyy seuraamaan töitä, joihin hänellä on kiinnostusta.
+Käyttäjä merkitsemään työn tehdyksi jolloin siitä siirtyy tieto hänen tienauksiinsa, jota hän pystyy seuraamaan sivustolta.
 
 
 ## Linkki herokuun
