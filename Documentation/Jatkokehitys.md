@@ -8,7 +8,4 @@
   - Kysymyksiä  voidaan up/down voteta.
   
 ## Puuttuvat ominaisuudet
-  - Työn luoja pystyisi ottamaan yhteyttä kiinnostuneisiin työntekijöihin.
-  - Kun työn luoja ja tekijä painavat molemmat Job done napista, niin ohjelmalle tulisi tieto siitä että työ on tehty
-  - Työnantajalle sekä tekijälle voi antaa arvosteluja.
-  - Käyttäjä pystyisi selata työhistoriaansa
+  - Työn luoja näkisi työstä kiinnostuneet tekijät
