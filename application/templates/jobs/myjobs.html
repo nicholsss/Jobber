@@ -2,18 +2,14 @@
 
 {% block body %}
 <div class="container">
+  <h3>How much earned throught Jobber {{user.earned}} €</h3>
   <h1>Jobs That i'm intrested</h1>
-  <p> U have earned {{user.earned}}</p>
   <div class="row">
-
 
     {% for job in jobs %}
 
     {% if job.interested == 'Interested' %}
 
-
-    
-    <h1>job.nimi</h1>
     <div class="card text-center" style="width: 18rem;">
       <div class="card-body">
         <a href="{{ url_for('jobs_show', job_id=job.id) }}">

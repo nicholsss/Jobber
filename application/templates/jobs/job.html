@@ -10,6 +10,7 @@
   <p>Job added {{user.username}}</p>
 
   <hr class="my-4">
+
   {% if user is defined %}
   <form method="POST" action="{{url_for('jobs_question', job_id = job.id)}}">
     {{form.name (class='form-control')}}

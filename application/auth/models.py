@@ -16,7 +16,6 @@ class User(Base):
     question = db.relationship('Question', backref="account")
     
     def __init__(self,username,password, roles):
-       # self.name = name
         self.username = username
         self.password_hash = generate_password_hash(password)
         self.earned = 0;     
@@ -53,5 +52,7 @@ class User(Base):
 
         return response
     #Eniten tienannut
+
+
 
     #Eniten töistä kiinnostunut

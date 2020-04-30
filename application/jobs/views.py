@@ -17,7 +17,6 @@ def jobs_index():
         
         return render_template("jobs/list.html", jobs = Job.query.all())
     
-
 @app.route("/jobs/new/")
 @login_required
 def jobs_form():
@@ -44,7 +43,7 @@ def jobs_show(job_id):
     if current_user.is_authenticated:
         return render_template("jobs/job.html", form = questionForm(), job = Job.query.get(job_id),users=current_user, user = User.query.get(Job.query.get(job_id).account_id))
     else:
-          return render_template("jobs/job.html", form = questionForm(), job = Job.query.get(job_id), author = Job.job_author(job_id), user = User.query.get(Job.query.get(job_id).account_id))
+          return render_template("jobs/job.html", form = questionForm(), job = Job.query.get(job_id), user = User.query.get(Job.query.get(job_id).account_id))
 
 @app.route("/jobs/question/<job_id>/", methods =['POST'])
 @login_required
@@ -63,7 +62,7 @@ def jobs_question(job_id):
 def jobs_edit(job_id):
     j = Job.query.get(job_id)
 
-    if j.account_id != current_user.id:
+    if j.account_id != current_user.id and current_user.roles != 'ADMIN':
    
         return login_manager.unauthorized()
     form = JobForm(request.form)
@@ -128,13 +127,12 @@ def jobs_set_active(job_id,k):
         
         return redirect(url_for("jobs_index")) 
        
-
 @app.route("/jobs/delete/<job_id>/", methods=["POST"])
 @login_required
 def jobs_delete(job_id):
     j = Job.query.get(job_id)
-    if j.account_id != current_user.id:
-       #Tätä pitää vielä muokata, sillä ohjaa väärään paikkaan.
+    if j.account_id != current_user.id and current_user.roles != 'ADMIN':
+      
         return login_manager.unauthorized()
     
     Question.query.filter_by(job_id = job_id).delete()
@@ -158,7 +156,3 @@ def jobs_create():
     db.session().commit()
 
     return redirect(url_for("jobs_index"))
-
-
-
-    

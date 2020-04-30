@@ -21,8 +21,8 @@ class Job(Base):
         self.description = description
         self.active = False
         self.account_id = account_id
-    @staticmethod
 
+    @staticmethod
     def interested_jobs(accountID):
 
         stmt = text("SELECT Job.id, Job.name, Job.salary,Job.description, CASE WHEN Job.id IN (SELECT UJ.job_id FROM Account A LEFT JOIN userjobs UJ on A.id = UJ.account_id WHERE UJ.account_id = :accountID)"
@@ -35,9 +35,13 @@ class Job(Base):
         return response
 
     @staticmethod
-    def my_interested_jobs(accountID):
-        stmt = text("SELECT Account.username FROM Account")
-      
+    def interested_users(jobID):
+        stmt = text("SELECT A.username, A.phone FROM Account A WHERE A.id IN (SELECT UJ.A.id FROM Account A LEFT JOIN userjobs UJ on A.id = UJ.account_id WHERE UJ.job_id = :jobID").params(jobID = jobID)
+        res = db.engine.execute(stmt)
+        response = []
+        for row in res:
+            response.append({"id":row[0],"username":row[1]})
+        return response
     
     @staticmethod
     def jobs_offers():
@@ -49,24 +53,3 @@ class Job(Base):
         
         return response
     
-
-    @staticmethod
-    def job_author(accountID):
-       #stmt = text("SELECT A.username from account A WHERE A.id = (SELECT account_id FROM Job WHERE A.id = :accountID)").params(accountID = accountID)
-        stmt = text("SELECT A.username FROM Account A, Job j WHERE j.id = :accountID AND J.account_id = :accountID").params(accountID = accountID)
-        res = db.engine.execute(stmt)
-        response = []
-        for row in res:
-            response.append({"author":row[0]})
-        
-        return response
-
-    @staticmethod
-    def jobs_listed(jobID):
-        stmt = text("SELECT * FROM Account A, Job J WHERE A.id = 1 AND J.account_id = A.id;")
-
-    # SELECT * FROM Account A, Job J WHERE A.id = 1 AND J.account_id = A.id;
-    #SELECT A.id from account A WHERE A.id = (SELECT account_id FROM Job WHERE A.id == account_id);
-   # SELECT A.username FROM Account A WHERE account_id = 1;
-    #SELECT A.username FROM Account A, Job j WHERE A.id = 2 AND J.account_id = 2;
-    #SELECT A.username FROM Account A, Job j WHERE j.id = 1 AND J.account_id = 1
