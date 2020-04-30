@@ -1,6 +1,6 @@
 ## Tietokantakaavio
 
-<img src="https://github.com/nicholsss/Jobber/blob/master/Documentation/UusiKaavio.png">
+<img src="https://github.com/nicholsss/Jobber/blob/master/Documentation/dbdiagram.PNG">
 
 CREATE TABLE lauseet
 ```
